@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" th:replace="base::layout(~{::section})" >
+<head>
+	<title>Home</title>
+</head>
+
+<body >
+	<section>
+		 <div class="container loginpadd">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="my-card mt-3">
+				
+				   
+					<h1 class="text-center ">Login</h1>
+					
+					<form  th:action="@{/login}" method="post" >
+						
+						<div th:if="${param.error}" class="alert alert-success">
+							Invalid Credentials
+						
+						</div>
+						
+						
+						<div th:if="${param.logout}" class="alert alert-danger">
+								successfully logged out
+						
+						</div>
+						
+					    
+					    <!-- email field -->
+					    <div class="form-group">
+    						<label for="exampleInput">Username</label>
+    						<input type="email" class="form-control" 
+    						
+    						id="email_field" 
+    						aria-describedby="emailHelp" 
+    						placeholder="Enter email"
+    						name="username"  
+    					
+    						>
+    							
+       					
+       					</div>
+       					
+       					<!-- passwoord field -->
+					    <div class="form-group">
+    						<label for="exampleInputpassword">Password</label>
+    						<input type="password" 
+    						class="form-control" 
+    						
+    						id="password_field"
+    						 aria-describedby="emailHelp" 
+    						 name="password"
+    						 placeholder="Enter Password">
+    						 
+       					</div>
+       					
+       					
+       					
+       					<div class="padd container text-center">
+       						
+       						<input type="submit" name="submit" class="btn bg-primary text-white" value="submit">			
+       						
+       					</div>
+					</form>
+					
+					
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>	
+	</section>
+	
+</body>
+
+
+</html> 

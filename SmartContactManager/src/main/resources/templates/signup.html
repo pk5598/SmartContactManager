@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" th:replace="base::layout(~{::section})" >
+<head>
+	<title>Home</title>
+	
+</head>
+
+<body>
+	<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="my-card mt-3">
+				
+				   <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert alert-primary" role="alert">
+  					   <p class="text-center" th:text="${session.message.content}"></p>
+  					   
+  					   <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+				   </div>
+					<h1 class="text-center ">Sign Up Here</h1>
+					
+					<form  th:action="@{/do_register}" method="post" th:object="${user}">
+						
+						<!-- name field -->
+						<div class="form-group">
+    						<label for="exampleInputName">Name</label>
+    						
+    						<!-- name attribute is used to take the data to controller -->
+    						<!-- value attribute is used to bring the data from model object -->
+    						
+    						
+    						<input type="text" class="form-control" 
+    						th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+    						id="name_field" 
+    						name="name"   
+    						
+    						th:value="${user.name}"
+    						placeholder="Enter Name"
+    						/>
+    						<div th:each="e:${#fields.errors('name')}" th:text="${e}" 
+    							id="validationServer03Feedback" 
+    							class="invalid-feedback">
+      	
+    						</div>
+    						
+    					</div>
+					    
+					    <!-- email field -->
+					    <div class="form-group">
+    						<label for="exampleInput">Email address</label>
+    						<input type="email" class="form-control" 
+    						th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+    						id="email_field" 
+    						aria-describedby="emailHelp" 
+    						placeholder="Enter email"
+    						name="email"  
+    						th:value="${user.email}"
+    						>
+    						<div th:each="e:${#fields.errors('email')}" th:text="${e}" 
+    							id="validationServer03Feedback" 
+    							class="invalid-feedback">
+      	
+    						</div>
+    						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+       					
+       					
+       					</div>
+       					
+       					<!-- passwoord field -->
+					    <div class="form-group">
+    						<label for="exampleInputpassword">Password</label>
+    						<input type="password" 
+    						class="form-control" 
+    						th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
+    						id="password_field"
+    						 aria-describedby="emailHelp" 
+    						 name="password"
+    						 placeholder="Enter Password">
+    						 <div th:each="e:${#fields.errors('password')}" th:text="${e}" 
+    							id="validationServer03Feedback" 
+    							class="invalid-feedback">
+      	
+    						</div>
+    						<small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+       					    
+       					</div>
+       					
+       					<!-- about field -->
+					    <div class="form-group">
+    					
+    					    <textarea class="form-control" 
+    					      rows="5" cols="45" 
+    					    placeholder="Enter something about yourself"
+    					    name="about" 
+    					    th:text="${user.about}"
+    					    >
+    					    </textarea> 
+       					</div>
+       					
+       					<!-- terms and conditions -->
+       					<div class="form-group form-check">
+       						<input type="checkbox"
+       						name="agreement"
+       						class="form-check-input"
+       						id="agreement"
+       						
+       						/>
+       						<label for="agreement">Accept terms and conditions</label>
+       					
+       					</div>
+       					
+       					
+       					<div class="padd container text-center">
+       						<button type="submit" class="btn bg-primary text-white" >Submit</button>
+       						<button type="reset" class="btn btn-warning text-white" >Reset</button>
+       					
+       						
+       					</div>
+					</form>
+					
+					
+				</div>
+			
+			</div>
+		
+		</div>
+	
+	</div>	
+
+	</section>
+	
+</body>
+
+
+</html> 
